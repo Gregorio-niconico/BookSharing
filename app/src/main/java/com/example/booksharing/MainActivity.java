@@ -3,12 +3,9 @@ package com.example.booksharing;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.booksharing.database.RegisterActivity;
 
 import org.litepal.LitePal;
 
