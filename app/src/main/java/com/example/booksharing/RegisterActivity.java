@@ -24,23 +24,27 @@ import org.litepal.LitePal;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText et_username;
-    private EditText et_pwd;
-    private EditText et_checkpwd;
-    private SQLiteDatabase db;
-    private List<user_info> userInfo;
+    private EditText edit_username;
+    private EditText edit_pwd;
+    private EditText edit_checkpwd;
+//    private SQLiteDatabase db;
+   // private List<user_info> userInfo;
     private String username,pwd,checkpwd;
-    private static final String TAG="LoginActivity";
+    private static final String TAG="RegisterActivity";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        db = LitePal.getDatabase();
-        et_username = (EditText) findViewById(R.id.edit_username);
-        et_pwd = (EditText) findViewById(R.id.edit_pwd);
-        et_checkpwd = (EditText) findViewById(R.id.edit_checkpwd);
+        LitePal.getDatabase();
+        user_info u=new user_info();
+        u.setPassword("1");
+        u.setUsername("杨振奇");
+        u.save();
+        edit_username = (EditText) findViewById(R.id.edit_username);
+        edit_pwd = (EditText) findViewById(R.id.edit_pwd);
+        edit_checkpwd = (EditText) findViewById(R.id.edit_checkpwd);
         Button confirmButton = (Button) findViewById(R.id.button_confirm);
         Button cancelButton = (Button) findViewById(R.id.button_cancel);
         confirmButton.setOnClickListener(this);
@@ -54,9 +58,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.button_confirm:
                 if(!username.isEmpty()) {
-                    userInfo = LitePal.where("username=?", username)
+                    List<user_info> userInfo = LitePal.where("username like ?", username)
                             .find(user_info.class);
-                    Log.d("RegisterActivity", userInfo.get(0).getUsername());
+                    //Log.d("RegisterActivity", userInfo.get(0).getUsername());
                     if (userInfo.isEmpty()) {
                          if (!pwd.isEmpty()&&!checkpwd.isEmpty()) {
                              if (!pwd.equals(checkpwd)) {
@@ -72,9 +76,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                              }
                          }else{
                              cleanEditText();
-//                             List<user_info> u=LitePal.where("uesrname=?",username).find(user_info.class);
-//                             Log.d(TAG,u.get(0).getUsername());
-
                              Toast.makeText(this,"密码不能为空哦!",Toast.LENGTH_SHORT).show();
                          }
                     } else {
@@ -94,15 +95,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     //获取输入框控件内容
     public void getEditString(){
-        username=et_username.getText().toString();
-        pwd=et_pwd.getText().toString();
-        checkpwd=et_checkpwd.getText().toString();
+        username=edit_username.getText().toString();
+        pwd=edit_pwd.getText().toString();
+        checkpwd=edit_checkpwd.getText().toString();
     }
 
     //清空输入框
     public void cleanEditText(){
-        et_username.setText("");
-        et_pwd.setText("");
-        et_checkpwd.setText("");
+        edit_username.setText("");
+        edit_pwd.setText("");
+        edit_checkpwd.setText("");
     }
 }
