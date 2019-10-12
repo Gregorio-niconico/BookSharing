@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private SQLiteDatabase db;
     private List<user_info> userInfo;
     private String username,pwd,checkpwd;
+    private static final String TAG="LoginActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 if(!username.isEmpty()) {
                     userInfo = LitePal.where("username=?", username)
                             .find(user_info.class);
+                    Log.d("RegisterActivity", userInfo.get(0).getUsername());
                     if (userInfo.isEmpty()) {
                          if (!pwd.isEmpty()&&!checkpwd.isEmpty()) {
                              if (!pwd.equals(checkpwd)) {
@@ -68,6 +72,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                              }
                          }else{
                              cleanEditText();
+//                             List<user_info> u=LitePal.where("uesrname=?",username).find(user_info.class);
+//                             Log.d(TAG,u.get(0).getUsername());
+
                              Toast.makeText(this,"密码不能为空哦!",Toast.LENGTH_SHORT).show();
                          }
                     } else {
@@ -86,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     //获取输入框控件内容
-    private void getEditString(){
+    public void getEditString(){
         username=et_username.getText().toString();
         pwd=et_pwd.getText().toString();
         checkpwd=et_checkpwd.getText().toString();
