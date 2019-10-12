@@ -1,10 +1,12 @@
 package com.example.booksharing.database;
 
-public class user_info {
+import org.litepal.crud.LitePalSupport;
+
+public class user_info extends LitePalSupport {
     private String username;
     private String password;
-    private String email;
-    private String telphone;
+//    private String email;
+//    private String telphone;
 
     public String getUsername() {
         return username;
@@ -22,19 +24,19 @@ public class user_info {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
-    }
+//    public String getTelphone() {
+//        return telphone;
+//    }
+//
+//    public void setTelphone(String telphone) {
+//        this.telphone = telphone;
+//    }
 }

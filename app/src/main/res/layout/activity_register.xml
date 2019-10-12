@@ -50,6 +50,7 @@
             android:id="@+id/edit_pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="输入你的密码"
             />
     </LinearLayout>
@@ -69,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="再次输入密码"
+            android:inputType="textPassword"
             />
     </LinearLayout>
 
@@ -82,6 +84,10 @@
             android:id="@+id/button_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:shadowColor="#aa5"
+            android:shadowRadius="10"
+            android:shadowDx="5"
+            android:shadowDy="5"
             android:text="确认"
             />
         <Button
