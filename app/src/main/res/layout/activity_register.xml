@@ -70,8 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="再次输入密码"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,14 +87,26 @@
             android:shadowRadius="10"
             android:shadowDx="5"
             android:shadowDy="5"
-            android:text="确认"
-            />
+            android:text="确认" />
         <Button
             android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="取消"
+            android:text="取消" />
+    </LinearLayout>
 
-            />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/return_login"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25sp"
+            android:textSize="10sp"
+            android:textColor="#0099FF"
+            android:text="返回登录"/>
     </LinearLayout>
 </LinearLayout>

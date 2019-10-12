@@ -1,5 +1,6 @@
 package com.example.booksharing;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -27,8 +28,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText edit_username;
     private EditText edit_pwd;
     private EditText edit_checkpwd;
-//    private SQLiteDatabase db;
-   // private List<user_info> userInfo;
+    private TextView returnLogin;
     private String username,pwd,checkpwd;
     private static final String TAG="RegisterActivity";
 
@@ -39,9 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
         LitePal.getDatabase();
         user_info u=new user_info();
-        u.setPassword("1");
-        u.setUsername("杨振奇");
-        u.save();
+        returnLogin=(TextView)findViewById(R.id.return_login);
         edit_username = (EditText) findViewById(R.id.edit_username);
         edit_pwd = (EditText) findViewById(R.id.edit_pwd);
         edit_checkpwd = (EditText) findViewById(R.id.edit_checkpwd);
@@ -88,6 +86,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.button_cancel:
                 cleanEditText();
+                break;
+            case R.id.return_login:
+                Intent intent=new Intent("android.intent.action.MAIN");
+                startActivity(intent);
                 break;
         }
 
