@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.booksharing.database.user_info;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.litepal.LitePal;
 
@@ -50,7 +53,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(!pwd.isEmpty()) {
                             if (userInfo.get(0).getPassword().equals(pwd)) {
                                 cleanEditText();
-                                Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
+                                Snackbar.make(v,"登录成功！",Snackbar.LENGTH_SHORT).show();
+//                                Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent("com.example.booksharing.mainactivity");
                                 startActivity(intent);
 

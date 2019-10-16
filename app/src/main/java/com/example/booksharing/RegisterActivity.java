@@ -28,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText edit_username;
     private EditText edit_pwd;
     private EditText edit_checkpwd;
-    private TextView returnLogin;
     private String username,pwd,checkpwd;
     private static final String TAG="RegisterActivity";
 
@@ -39,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
         LitePal.getDatabase();
         user_info u=new user_info();
-        returnLogin=(TextView)findViewById(R.id.return_login);
+        Button returnLogin=(Button)findViewById(R.id.return_login);
         edit_username = (EditText) findViewById(R.id.edit_username);
         edit_pwd = (EditText) findViewById(R.id.edit_pwd);
         edit_checkpwd = (EditText) findViewById(R.id.edit_checkpwd);
@@ -47,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Button cancelButton = (Button) findViewById(R.id.button_cancel);
         confirmButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
+        returnLogin.setOnClickListener(this);
     }
 
 
@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 cleanEditText();
                 break;
             case R.id.return_login:
-                Intent intent=new Intent("android.intent.action.MAIN");
+                Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
                 break;
         }
